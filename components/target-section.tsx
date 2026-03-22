@@ -1,33 +1,25 @@
-import { Baby, Briefcase, Heart, ShoppingBag, Sparkles, User } from "lucide-react"
-
 const targets = [
   {
-    icon: User,
     title: "Любитель",
     description: "и хочешь стать профессионалом, хочешь снимать шикарно и монетизировать хобби"
   },
   {
-    icon: Heart,
     title: "Продолжающий фотограф",
     description: "и хочешь улучшить свои знания, повысить чек, уровень и качество работ"
   },
   {
-    icon: Briefcase,
     title: "СММ-специалист",
     description: "и хочешь снимать на айфон, делать ленту"
   },
   {
-    icon: ShoppingBag,
     title: "Владелец бизнеса/бренда/шоурума",
     description: "и хочешь научиться снимать сам, не тратя деньги на контент"
   },
   {
-    icon: Sparkles,
     title: "Снимаешь видео",
     description: "и хочешь научиться снимать фото и дополнить свои знания"
   },
   {
-    icon: Baby,
     title: "Снимаешь на камеру",
     description: "и хочешь перейти на айфон"
   }

@@ -1,6 +1,6 @@
 'use client'
 
-import { Mail, MessageCircle, Phone } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 export function Footer() {
   return (

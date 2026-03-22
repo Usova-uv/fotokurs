@@ -50,18 +50,21 @@ export function BenefitsSection() {
         
         {/* Benefits grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {benefits.map((benefit, index) => (
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon
+            return (
             <div 
               key={index}
               className="group p-8 rounded-2xl bg-[#0a0a0a] border border-[#2a2a2a] hover:border-[#E9C9D1]/50 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="w-14 h-14 rounded-xl bg-[#E9C9D1]/10 flex items-center justify-center mb-6 group-hover:bg-[#E9C9D1]/20 transition-colors">
-                <benefit.icon className="w-7 h-7 text-[#E9C9D1]" />
+                <Icon className="w-7 h-7 text-[#E9C9D1]" />
               </div>
               <h3 className="font-sans text-lg font-semibold mb-3 text-white">{benefit.title}</h3>
               <p className="text-sm text-zinc-400 leading-relaxed">{benefit.description}</p>
             </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </section>
