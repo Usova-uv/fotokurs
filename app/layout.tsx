@@ -3,6 +3,14 @@ import { Inter, Playfair_Display, Montserrat } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
+/** Префикс путей для GitHub Pages (совпадает с GITHUB_PAGES_BASE_PATH в next.config). */
+function withBasePath(path: string) {
+  const raw = process.env.GITHUB_PAGES_BASE_PATH || ''
+  const base = raw.replace(/\/$/, '')
+  if (!base) return path
+  return `${base}${path.startsWith('/') ? path : `/${path}`}`
+}
+
 const inter = Inter({ 
   subsets: ["latin", "cyrillic"],
   variable: '--font-sans',
@@ -33,19 +41,19 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: withBasePath('/icon-light-32x32.png'),
         media: '(prefers-color-scheme: light)',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: withBasePath('/icon-dark-32x32.png'),
         media: '(prefers-color-scheme: dark)',
       },
       {
-        url: '/icon.svg',
+        url: withBasePath('/icon.svg'),
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: withBasePath('/apple-icon.png'),
   },
 }
 

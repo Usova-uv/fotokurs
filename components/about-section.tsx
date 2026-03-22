@@ -1,5 +1,10 @@
 import Image from "next/image"
 
+const publicFile = (path: string) => {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH || ""
+  return `${base}${path.startsWith("/") ? path : `/${path}`}`
+}
+
 export function AboutSection() {
   return (
     <section id="about" className="py-24 bg-[#0a0a0a]">
@@ -9,7 +14,7 @@ export function AboutSection() {
           <div className="relative">
           <div className="aspect-[3/4] rounded-2xl border border-[#2a2a2a] overflow-hidden">
     <Image
-    src="/irina-photo.jpg"
+    src={publicFile("/irina-photo.jpg")}
     alt="Ирина Данелия – мобильный фотограф"
     fill
     className="object-cover"
