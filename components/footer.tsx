@@ -16,7 +16,7 @@ export function Footer() {
           </p>
           <a 
             href="#tariffs" 
-            className="inline-block bg-[#E9C901] text-black hover:bg-[#E9C901]/90 rounded-lg py-3 px-8 font-medium transition-colors"
+            className="inline-block bg-[#DC2626] text-white hover:bg-[#DC2626]/90 rounded-full py-3 px-8 font-medium transition-colors"
           >
             Выбрать тариф
           </a>
@@ -31,12 +31,12 @@ export function Footer() {
             </h3>
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 text-[#E9C901]" />
+                <Mail className="w-4 h-4 text-[#DC2626]" />
                 <span className="text-sm text-zinc-400">biryukova.8888@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4 text-[#E9C901]" />
-                <a href="tel:+79645825354" className="text-sm text-zinc-400 hover:text-[#E9C901] transition-colors">
+                <Phone className="w-4 h-4 text-[#DC2626]" />
+                <a href="tel:+79645825354" className="text-sm text-zinc-400 hover:text-[#DC2626] transition-colors">
                   +7 (964) 582-53-54
                 </a>
               </div>
