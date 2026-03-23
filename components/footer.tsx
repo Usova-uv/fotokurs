@@ -1,6 +1,6 @@
 'use client'
 
-import { Mail } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -33,6 +33,12 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-[#E9C901]" />
                 <span className="text-sm text-zinc-400">biryukova.8888@gmail.com</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-[#E9C901]" />
+                <a href="tel:+79645825354" className="text-sm text-zinc-400 hover:text-[#E9C901] transition-colors">
+                  +7 (964) 582-53-54
+                </a>
               </div>
             </div>
           </div>
