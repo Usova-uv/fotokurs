@@ -18,7 +18,8 @@ export function AboutSection() {
     alt="Ирина Данелия – мобильный фотограф"
     fill
     className="object-cover"
-    sizes="(max-width: 1024px) 100vw, 50vw"
+    sizes="(max-width: 768px) 100vw, 50vw"
+    priority
   />
 </div>
             {/* Decorative frame */}
