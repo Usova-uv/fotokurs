@@ -43,6 +43,12 @@ export function Footer() {
             </div>
           </div>
         </div>
+
+        <p className="text-center text-xs text-zinc-500 pt-8">
+          <a href="/privacy/" className="hover:text-[#7A2E2E] transition-colors">
+            Политика конфиденциальности
+          </a>
+        </p>
       </div>
     </footer>
   )
