@@ -58,6 +58,9 @@ export default function TariffsSection() {
   return (
     <section id="tariffs" className="py-20 bg-black">
       <div className="container mx-auto px-4">
+        <p className="text-base text-white text-center mb-6">
+          Обучение находится в закрытом телеграм канале, все уроки разделены по модулям.
+        </p>
         <h2 className="text-4xl font-bold text-center mb-12 text-white">Тарифы обучения</h2>
         
         <div className="grid md:grid-cols-3 gap-0 max-w-6xl mx-auto">
