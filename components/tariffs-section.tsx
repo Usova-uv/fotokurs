@@ -117,7 +117,7 @@ export default function TariffsSection() {
                   href="https://t.me/irinadaneliya"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full bg-white text-red-600 border border-red-600 font-bold py-4 px-8 rounded-full hover:bg-gray-100 transition-colors inline-block text-center"
+                  className="w-full bg-[#ffffff] text-[#000000] font-bold py-4 px-8 rounded-full hover:bg-gray-100 transition-colors inline-block text-center border-0"
                 >
                   ВЫБРАТЬ ТАРИФ
                 </a>
