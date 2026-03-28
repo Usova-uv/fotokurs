@@ -29,6 +29,11 @@ const montserrat = Montserrat({
   weight: ['400', '500', '600', '700', '900']
 });
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+}
+
 export const metadata: Metadata = {
   title: 'PRO ВЗГЛЯД | Курс мобильной фотографии',
   description: 'Курс по мобильной фотографии от Ирины Данелия. Видеть свет. Чувствовать человека. Снимать осознанно.',
@@ -63,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru" className={`${inter.variable} ${playfair.variable} ${montserrat.variable}`}><head>
+    <html lang="ru" className={`${inter.variable} ${playfair.variable} ${montserrat.variable} overflow-x-hidden`}><head>
         <script type="text/javascript">{`
           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
           m[i].l=1*new Date();

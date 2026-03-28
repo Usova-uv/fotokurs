@@ -4,21 +4,34 @@ import Image from "next/image"
 import { useState } from "react"
 import { X } from "lucide-react"
 
+/**
+ * Фото лежат в `public/portfolio/` — отдаются с вашего домена.
+ * (Раньше: Vercel Blob — часто нестабилен из РФ без VPN.)
+ * Оригиналы для замены файлов:
+ * - https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5856.JPG-H1A0DQ6E2V6dOSEfIGEnZ6KW1KQpgg.jpeg → portfolio-1.jpeg
+ * - https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5865.JPG-44MIcjjO2eOPm0K2T4Hax3XkFAJsH3.jpeg → portfolio-2.jpeg
+ * - https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5877.JPG-rdZcTWWffh29sN2Kkx0SjEpQSTn95A.jpeg → portfolio-3.jpeg
+ */
+const publicFile = (path: string) => {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH || ""
+  return `${base}${path.startsWith("/") ? path : `/${path}`}`
+}
+
 const portfolioImages = [
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5856.JPG-H1A0DQ6E2V6dOSEfIGEnZ6KW1KQpgg.jpeg",
+    src: publicFile("/portfolio/portfolio-1.jpeg"),
     alt: "Коллекция профессиональных fashion портретов",
-    size: "large"
+    size: "large" as const,
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5865.JPG-44MIcjjO2eOPm0K2T4Hax3XkFAJsH3.jpeg",
+    src: publicFile("/portfolio/portfolio-2.jpeg"),
     alt: "Коллекция профессиональных fashion портретов",
-    size: "large"
+    size: "large" as const,
   },
   {
-    src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5877.JPG-rdZcTWWffh29sN2Kkx0SjEpQSTn95A.jpeg",
+    src: publicFile("/portfolio/portfolio-3.jpeg"),
     alt: "Коллекция чёрно-белых портретов пар на улицах города",
-    size: "large"
+    size: "large" as const,
   },
 ]
 
