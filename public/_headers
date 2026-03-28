@@ -1,0 +1,11 @@
+# Netlify / некоторые edge-хосты. Timeweb Cloud может не читать файл — задайте заголовки в панели.
+# Диагностика «липкого» кэша у оператора: жёсткий no-cache только для картинок.
+
+/*
+  X-Content-Type-Options: nosniff
+
+/portfolio/*
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/irina-photo.jpg
+  Cache-Control: no-cache, no-store, must-revalidate
