@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter, Playfair_Display, Montserrat } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 /** Префикс путей для GitHub Pages (совпадает с GITHUB_PAGES_BASE_PATH в next.config). */
@@ -85,7 +84,6 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-black text-white">
         {children}
-        <Analytics />
       </body>
     </html>
   )

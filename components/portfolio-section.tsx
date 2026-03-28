@@ -1,16 +1,11 @@
 "use client"
 
-import Image from "next/image"
 import { useState } from "react"
 import { X } from "lucide-react"
 
 /**
- * Фото лежат в `public/portfolio/` — отдаются с вашего домена.
- * (Раньше: Vercel Blob — часто нестабилен из РФ без VPN.)
- * Оригиналы для замены файлов:
- * - https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5856.JPG-H1A0DQ6E2V6dOSEfIGEnZ6KW1KQpgg.jpeg → portfolio-1.jpeg
- * - https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5865.JPG-44MIcjjO2eOPm0K2T4Hax3XkFAJsH3.jpeg → portfolio-2.jpeg
- * - https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5877.JPG-rdZcTWWffh29sN2Kkx0SjEpQSTn95A.jpeg → portfolio-3.jpeg
+ * Файлы: `public/portfolio/portfolio-1.jpeg` … `portfolio-3.jpeg`.
+ * `publicFile` учитывает NEXT_PUBLIC_BASE_PATH при деплое в подкаталог.
  */
 const publicFile = (path: string) => {
   const base = process.env.NEXT_PUBLIC_BASE_PATH || ""
@@ -21,17 +16,14 @@ const portfolioImages = [
   {
     src: publicFile("/portfolio/portfolio-1.jpeg"),
     alt: "Коллекция профессиональных fashion портретов",
-    size: "large" as const,
   },
   {
     src: publicFile("/portfolio/portfolio-2.jpeg"),
     alt: "Коллекция профессиональных fashion портретов",
-    size: "large" as const,
   },
   {
     src: publicFile("/portfolio/portfolio-3.jpeg"),
     alt: "Коллекция чёрно-белых портретов пар на улицах города",
-    size: "large" as const,
   },
 ]
 
@@ -41,7 +33,6 @@ export function PortfolioSection() {
   return (
     <section id="portfolio" className="py-24 bg-[#000000]">
       <div className="container mx-auto px-4">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="font-montserrat text-white font-semibold text-xs tracking-widest uppercase mb-4">Портфолио</p>
           <h2 className="font-montserrat text-5xl md:text-6xl font-semibold mb-6 text-balance text-white uppercase tracking-[-0.03em]">
@@ -52,23 +43,22 @@ export function PortfolioSection() {
           </p>
         </div>
 
-        {/* Masonry Grid */}
         <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
           {portfolioImages.map((image, index) => (
-            <div 
+            <div
               key={index}
               className="break-inside-avoid mb-4 group cursor-pointer"
               onClick={() => setSelectedImage(image.src)}
             >
               <div className="relative overflow-hidden rounded-xl border border-[#2a2a2a] hover:border-[#E9C9D1]/50 transition-all duration-300">
-                <Image
+                <img
                   src={image.src}
                   alt={image.alt}
-                  width={600}
-                  height={image.size === "large" ? 900 : 700}
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  width={1200}
+                  height={1800}
                   loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4">
@@ -81,26 +71,24 @@ export function PortfolioSection() {
         </div>
       </div>
 
-      {/* Lightbox */}
       {selectedImage && (
-        <div 
+        <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <button 
+          <button
+            type="button"
             className="absolute top-6 right-6 w-12 h-12 rounded-full bg-[#1a1a1a] flex items-center justify-center text-white hover:bg-[#2a2a2a] transition-colors"
             onClick={() => setSelectedImage(null)}
             aria-label="Закрыть"
           >
             <X className="w-6 h-6" />
           </button>
-          <div className="relative max-w-5xl max-h-[90vh] w-full h-full flex items-center justify-center">
-            <Image
+          <div className="relative max-w-5xl max-h-[90vh] w-full flex items-center justify-center">
+            <img
               src={selectedImage}
               alt="Увеличенное фото"
-              fill
-              className="object-contain"
-              sizes="100vw"
+              className="max-h-[90vh] max-w-full w-auto h-auto object-contain"
               onClick={(e) => e.stopPropagation()}
             />
           </div>
