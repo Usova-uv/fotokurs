@@ -50,17 +50,18 @@ export function PortfolioSection() {
               className="group cursor-pointer"
               onClick={() => setSelectedImage(image.src)}
             >
+              {/* Как в about-section: фиксированный aspect-ratio + absolute img — тот же паттерн, что у irina-photo.jpg */}
               <div className="relative overflow-hidden rounded-xl border border-[#2a2a2a] hover:border-[#E9C9D1]/50 transition-all duration-300">
-                {/* Масштаб на обёртке, не на <img>: иначе в части браузеров transform на img + overflow даёт чёрный прямоугольник */}
-                <div className="overflow-hidden transition-transform duration-500 group-hover:scale-105">
+                <div className="aspect-[2/3] relative overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
                   <img
                     src={image.src}
                     alt={image.alt}
                     width={1200}
                     height={1800}
-                    loading={index < 3 ? "eager" : "lazy"}
+                    loading="eager"
+                    fetchPriority={index === 0 ? "high" : "auto"}
                     decoding="async"
-                    className="block w-full h-auto object-cover"
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
                 </div>
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
