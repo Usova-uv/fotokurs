@@ -43,24 +43,27 @@ export function PortfolioSection() {
           </p>
         </div>
 
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {portfolioImages.map((image, index) => (
             <div
               key={index}
-              className="break-inside-avoid mb-4 group cursor-pointer"
+              className="group cursor-pointer"
               onClick={() => setSelectedImage(image.src)}
             >
               <div className="relative overflow-hidden rounded-xl border border-[#2a2a2a] hover:border-[#E9C9D1]/50 transition-all duration-300">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  width={1200}
-                  height={1800}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                {/* Масштаб на обёртке, не на <img>: иначе в части браузеров transform на img + overflow даёт чёрный прямоугольник */}
+                <div className="overflow-hidden transition-transform duration-500 group-hover:scale-105">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    width={1200}
+                    height={1800}
+                    loading={index < 3 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="block w-full h-auto object-cover"
+                  />
+                </div>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4">
                     <p className="text-white text-sm font-medium">{image.alt}</p>
                   </div>
