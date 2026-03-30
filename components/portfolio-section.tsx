@@ -42,7 +42,7 @@ export function PortfolioSection() {
 
         <PortfolioClient>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {portfolioImages.map((image, index) => (
+            {portfolioImages.map((image) => (
               <div
                 key={image.src}
                 data-portfolio-src={image.src}
@@ -54,8 +54,7 @@ export function PortfolioSection() {
                     alt={image.alt}
                     width={1200}
                     height={1800}
-                    loading="eager"
-                    fetchPriority={index === 0 ? "high" : "auto"}
+                    loading="lazy"
                     decoding="async"
                     draggable={false}
                     className="absolute inset-0 z-0 h-full w-full object-cover"
