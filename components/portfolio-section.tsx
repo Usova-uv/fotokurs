@@ -50,26 +50,21 @@ export function PortfolioSection() {
               className="group cursor-pointer"
               onClick={() => setSelectedImage(image.src)}
             >
-              {/* Как в about-section: фиксированный aspect-ratio + absolute img — тот же паттерн, что у irina-photo.jpg */}
-              <div className="relative overflow-hidden rounded-xl border border-[#2a2a2a] hover:border-[#E9C9D1]/50 transition-all duration-300">
-                <div className="aspect-[2/3] relative overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    width={1200}
-                    height={1800}
-                    loading="eager"
-                    fetchPriority={index === 0 ? "high" : "auto"}
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                </div>
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-white text-sm font-medium">{image.alt}</p>
-                  </div>
-                </div>
+              {/* 1:1 с about-section (irina-photo): один контейнер aspect + absolute img. Без второго слоя inset-0 поверх — он давал чёрные прямоугольники в части браузеров. */}
+              <div className="aspect-[2/3] relative rounded-xl border border-[#2a2a2a] overflow-hidden hover:border-[#E9C9D1]/50 transition-colors duration-300">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  width={1200}
+                  height={1800}
+                  loading="eager"
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
               </div>
+              <p className="mt-3 text-center text-xs text-zinc-500 line-clamp-2">{image.alt}</p>
             </div>
           ))}
         </div>
