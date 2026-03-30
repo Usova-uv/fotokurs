@@ -50,20 +50,13 @@ export function PortfolioSection() {
               className="group cursor-pointer"
               onClick={() => setSelectedImage(image.src)}
             >
-              {/* 1:1 с about-section (irina-photo): один контейнер aspect + absolute img. Без второго слоя inset-0 поверх — он давал чёрные прямоугольники в части браузеров. */}
-              <div className="aspect-[2/3] relative rounded-xl border border-[#2a2a2a] overflow-hidden hover:border-[#E9C9D1]/50 transition-colors duration-300">
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  width={1200}
-                  height={1800}
-                  loading="eager"
-                  fetchPriority={index === 0 ? "high" : "auto"}
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
+              {/* Фон через CSS: в части окружений <img>+absolute давал чёрный прямоугольник при том же URL, что открывается в новой вкладке. */}
+              <div
+                className="aspect-[2/3] w-full rounded-xl border border-[#2a2a2a] bg-zinc-900 bg-cover bg-center bg-no-repeat hover:border-[#E9C9D1]/50 transition-colors duration-300"
+                style={{ backgroundImage: `url(${image.src})` }}
+                role="img"
+                aria-label={image.alt}
+              />
               <p className="mt-3 text-center text-xs text-zinc-500 line-clamp-2">{image.alt}</p>
             </div>
           ))}
